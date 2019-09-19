@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> </title>
+    <title> {{ foo }} </title>
   </head>
   <body>
+    {% for item in collection %}
+      {{ item }}
+      <br>
+    {% endfor %}
   </body>
 </html>
