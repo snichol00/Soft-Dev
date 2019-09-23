@@ -15,18 +15,22 @@ def get_job():
         look = len(each)-1
         job = 0
         percent = 0
+        # look through the specific entry and separate the percentage and job title
         while look >= 0:
             if each[look] == ',': #look for the last comma in each line
                 job = each[0:look]
                 percent = float(each[look+1:])
                 coll[job] = percent
-                look = -1
+                look = -1 #get out of loop
             look -= 1
+        # makes an entry in rolls for every tenth of a percent, each entry has an occupation
         while percent > 0:
             index += 1
             rolls[index] = job #scale everything by 10, and give each percentage point a job
             percent -= 0.1
+    # randomly chooses one of the entries in rolls (which correspond to a tenth of a percentage point)
     roll = random.randint(1,998) #print job
+    # returns the job associated with the random chosen
     return rolls[roll]
 
 @app.route("/")
