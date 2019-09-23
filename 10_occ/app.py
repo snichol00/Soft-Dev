@@ -22,7 +22,7 @@ def get_job():
                 coll[job] = percent
                 look = -1
             look -= 1
-        while percent > 0:
+        while percent > 0.01:
             index += 1
             rolls[index] = job #scale everything by 10, and give each percentage point a job
             percent -= 0.1
