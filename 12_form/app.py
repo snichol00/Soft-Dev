@@ -4,29 +4,26 @@
 #2019-09-25
 
 from flask import Flask, render_template, request
+import cgi
 app = Flask(__name__)
 
 
 @app.route("/")
-def hello_world():
-    print("Main page loaded") # Prints out something on load/reload in console
-    return "New test page!"
-
-@app.route("/form")
 def makeForm():
-    return render_template('app.html',
-    )
+    return render_template('app.html')
 
 @app.route("/auth")
 def authenticate():
-    #print(app)
-    #print(request)
-    #print(request.headers)
+    print(app)
+    print(request)
+    print(request.headers)
     #print(request.method)
-    #print( request.args["data"] )
+    print(request.args)
     #print(request.form)
     #print(cgi.FieldStorage )
-    return "helo"
+    return render_template("output.html",
+                               username = request.args["data"],
+                               method = request.method)
 
 if __name__ == "__main__":
     app.debug = True # Automatically updates project with save file
