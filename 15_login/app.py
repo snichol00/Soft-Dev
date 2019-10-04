@@ -13,7 +13,9 @@ myPassword = "feet"
 
 @app.route("/")
 def loginPage():
+    # if already logged in
     if "current" in session:
+        # go directy to welcome page
         return redirect("/welcome")
     else:
         return render_template('login.html')
@@ -27,42 +29,42 @@ def authenticate():
     print(request.args)
     username = request.args['username']
     password = request.args['password']
+    # if the user inputs the correct username and password
     if (username == myUsername and password == myPassword):
+        # log them in and send to welcome page
         session["current"] = True
         return redirect("/welcome")
+    #otherwise, return error
     else:
-        return redirect("/error")
-
-@app.route("/error")
-def errorPage():
-    username = request.args['username']
-    password = request.args['password']
-    if (username != myUsername and password != myPassword):
-        return render_template('error.html',
-                                #username = request.args['username'],
-                                #password = request.args['password'],
-                                errMessage = "Incorrect Username and Password. Try Again")
-    if (username != myUsername):
-        return render_template('error.html',
-                                #username = request.args['username'],
-                                #password = request.args['password'],
-                                errMessage = "Incorrect Username. Try Again")
-    else:
-        return render_template('error.html',
-                                #username = request.args['username'],
-                                #password = request.args['password'],
-                                errMessage = "Incorrect Username. Try Again")
+        # return appropriate error message
+        if (username != myUsername and password != myPassword):
+            return render_template('error.html',
+                                    #username = request.args['username'],
+                                    #password = request.args['password'],
+                                    errMessage = "Incorrect Username and Password. Try Again")
+        if (username != myUsername):
+            return render_template('error.html',
+                                    #username = request.args['username'],
+                                    #password = request.args['password'],
+                                    errMessage = "Incorrect Username. Try Again")
+        else:
+            return render_template('error.html',
+                                    #username = request.args['username'],
+                                    #password = request.args['password'],
+                                    errMessage = "Incorrect Username. Try Again")
 
 
 @app.route("/welcome")
 def welcomePage():
-    return render_template('welcome.html',
-                            username = request.args['username'],
-                            password = request.args['password'])
+    return render_template('welcome.html')
+                            #username = request.args['username'],
+                            #password = request.args['password'])
 
 @app.route("/logout")
 def logout():
+    #end current session
     session.pop("current")
+    #go back to home page
     return redirect("/")
 
 
