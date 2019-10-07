@@ -1,24 +1,24 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Login</title>
-  </head>
-  <body>
-    <h2>LOGIN</h2>
+{% extends "template.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block header %}
+<h3>LOGIN</h3>
+{% endblock %}
+
+{% block body %}
+<form action="/auth" >
+    <h4>Username:</h4>
+    <input type = "text" name = "username" >
     <br>
-    <form action="/auth" >
-        <h4>Username:</h4>
-        <input type = "text" name = "username" >
-        <br>
-        <h4>Password:</h4>
-        <input type = "text" name = "password" >
-        <input type = "submit" name = "sub1">
-    </form>
-  </body>
-  <br>
-  <br>
-  <footer>
-    Team Sandwich: Sophie Nichol + Kevin Cai
-  </footer>
-</html>
+    <h4>Password:</h4>
+    <input type = "text" name = "password" >
+    <input type = "submit" name = "sub1">
+</form>
+{% endblock %}
+
+{% block footer %}
+<p>Team Sandwich: Sophie Nichol + Kevin Cai</p>
+{% endblock %}

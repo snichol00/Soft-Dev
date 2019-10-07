@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Welcome</title>
-  </head>
-  <body>
-    <h4>Logged In: Welcome to Antarctica</h4>
-    <br>
-    <h4>LOGOUT:</h4>
-    <form action="/logout">
-      <input type = "submit" name = "logout">
-    </form>
-      <br>
-  </body>
+{% extends "template.html" %}
+
+{% block title %}
+Welcome
+{% endblock %}
+
+{% block header %}
+<h3>Logged In: Welcome to Antarctica</h3>
+{% endblock %}
+
+{% block body %}
+<h4>LOGOUT:</h4>
+<form action="/logout">
+  <input type = "submit" name = "logout">
+</form>
   <br>
-  <br>
-  <footer>
-    Team Sandwich: Sophie Nichol + Kevin Cai
-  </footer>
-</html>
+{% endblock %}
+
+{% block footer %}
+<p>Team Sandwich: Sophie Nichol + Kevin Cai</p>
+{% endblock %}
