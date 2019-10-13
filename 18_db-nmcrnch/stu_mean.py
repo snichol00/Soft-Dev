@@ -1,46 +1,66 @@
-
 #Jun tao Lei, Grace Mao, Sophie Nichol
 #SoftDev1 pd9
 #K18: Average
 #2019-10-11
 
-import sqlite3
-import csv
+import sqlite3   #enable control of an sqlite database
+import csv       #facilitate CSV I/O
 
-DB_FILE="discobandit.db"
+DB_FILE="school.db"
 
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
-#create table for GPA's
-create_GPA_table = """ CREATE TABLE IF NOT EXISTS stu_avg (
-                                id INTEGER, avg INTEGER
-                            );"""
-c.execute(create_GPA_table)
 
-# finds the GPA of each student based on their ID
-def GPA(ID):
-    list_grades = str.format("SELECT mark FROM courses WHERE id = {}", ID) #accesses all grades from one student
-    all_grades = c.execute(list_grades)
-    grades = all_grades.fetchall()
-    sum = 0
-    for mark in grades:
-        sum += mark[0]
-    return sum/len(grades)
+# calculates and displays the average of each student (STEP 2)
+command = """
+            SELECT name, students.id, SUM(mark) / COUNT(mark) FROM courses, students
+            WHERE courses.id = students.id
+            GROUP BY students.id;
+          """
 
-# makae a list of all IDs
-id_list = "SELECT id FROM students"
-result = c.execute(id_list)
-ids = result.fetchall()
+# facilitate adding rows to courses (STEP 5)
+print("To stop adding courses, press ENTER")
+add = True;
+while (add):
+    code = input("Course code: ")
+    if (code == ""):
+        add = False
+    else:
+        mark = input("Course mark: ")
+        id = input("ID: ")
+        print(type(code))
+        commandAdd = """
+                        INSERT INTO courses VALUES ( '{}', {}, {} );
+                     """.format(code, mark, id)
+        c.execute(commandAdd)
 
-# add values to table
-for id in ids:
-    add_data = str.format("INSERT INTO stu_avg VALUES ({}, {});", id[0], GPA(id[0]))
-    c.execute(add_data)
-
-command2 = """
-            SELECT * FROM stu_avg;
+# creates new table stu_avg (STEP 4)
+command1 = """
+            CREATE TABLE stu_avg ( id INTEGER, average INTEGER );
            """
+
+c.execute(command1) #command1 executed first for fetchall purposes
+c.execute(command)
+
+# creating a list of the rows in the result of command
+rows = c.fetchall()
+#print(type(rows)) --> rows is a list
+for row in rows:
+    print("{}, {}: {}".format(row[0], row[1], row[2]))
+    # insert the id, average into stu_avg for each student
+    newCommand = "INSERT INTO stu_avg VALUES ({}, {})".format(row[1], row[2])
+    c.execute(newCommand)
+    #print(row)
+
+##USED TO TEST INSERTION OF VALUES
+command2 = """
+           SELECT * FROM stu_avg;
+           """
+c.execute(command2)
+r2 = c.fetchall()
+for r in r2:
+    print(r)
 
 db.commit() #save changes
 db.close()  #close database
