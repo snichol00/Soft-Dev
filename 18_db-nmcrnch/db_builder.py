@@ -17,7 +17,7 @@ c = db.cursor()               #facilitate db ops
 # < < < INSERT YOUR POPULATE-THE-DB CODE HERE > > >
 
 
-with open('data/students.csv') as studentFile:
+with open('students.csv') as studentFile:
     studentreader = csv.DictReader(studentFile)
     make_students = "CREATE TABLE IF NOT EXISTS students(name TEXT, age INTEGER, id INTEGER)"
     c.execute(make_students)
@@ -29,7 +29,7 @@ with open('data/students.csv') as studentFile:
         c.execute(enter_vals)
 studentFile.close()
 
-with open('data/courses.csv') as courseFile:
+with open('courses.csv') as courseFile:
     coursereader = csv.DictReader(courseFile)
     make_courses = "CREATE TABLE IF NOT EXISTS courses(code TEXT, mark INTEGER, id INTEGER)"
     c.execute(make_courses)

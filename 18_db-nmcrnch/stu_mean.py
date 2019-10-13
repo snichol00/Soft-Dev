@@ -7,7 +7,6 @@
 import sqlite3
 import csv
 
-
 DB_FILE="discobandit.db"
 
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
@@ -28,3 +27,20 @@ def GPA(ID):
     for mark in grades:
         sum += mark[0]
     return sum/len(grades)
+
+# makae a list of all IDs
+id_list = "SELECT id FROM students"
+result = c.execute(id_list)
+ids = result.fetchall()
+
+# add values to table
+for id in ids:
+    add_data = str.format("INSERT INTO stu_avg VALUES ({}, {});", id[0], GPA(id[0]))
+    c.execute(add_data)
+
+command2 = """
+            SELECT * FROM stu_avg;
+           """
+
+db.commit() #save changes
+db.close()  #close database
