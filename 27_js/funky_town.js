@@ -10,6 +10,15 @@ var fibonacci = function(n){
   }
 }
 
-var foo = function(n){
-  return n;
+var gcd = function(x, y){
+  if (x > y){
+    var max = x;
+    var min = y;
+    return gcd (x % y, y);
+  }
+  else{
+    var max = y;
+    var min = x;
+    return gcd (y % x, x);
+  }
 }
