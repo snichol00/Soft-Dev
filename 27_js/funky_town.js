@@ -10,15 +10,23 @@ var fibonacci = function(n){
   }
 }
 
-var gcdH = function(a, b, c) {
-  if (a % c == 0 && b % c == 0) return c;
-  else return gcdH(a, b, c-1);
-};
-var gcd = function(a, b) {
-  if (a == b) return a;
-  else if (a < b) return gcdH(a, b, a);
-  else return gcdH(a, b, b);
-};
+var gcd = function(x, y){
+  if (x > y){
+    var max = x;
+    var min = y;
+  }
+  else{
+    var max = y;
+    var min = x;
+  }
+  var n = min;
+  while (n > 0){
+    if (min % n == 0 && max % n == 0){
+      return n;
+    }
+    n--;
+  }
+}
 
 var studentlist = ["Me", "You", "Ed", "Joe", "Shelley", "Martha", "Gerard", "Steve", "Sally"];
 
