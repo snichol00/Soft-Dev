@@ -20,13 +20,36 @@ var gcd = function(a, b) {
   else return gcdH(a, b, b);
 };
 
-var studentlist = ["Me", "You", "Ed", "Joe", "Shelley", "Martha", "Gerard", "Steve", "Sally"];
+var studentList = ["Me", "You", "Ed", "Joe", "Shelley", "Martha", "Gerard", "Steve", "Sally"];
 
-var randomStudent = function(x){
-    var len = x.length;
-    var rand = Math.floor(Math.random(len) * len + 1);
-    return x[rand - 1];
+var randomStudent = function(){
+  var index = Math.floor(Math.random() * studentList.length);
+  return studentList[index];
 }
 
-var dasbut = document.getElementByID("fib");
-dasbut.addEventListener('click', fibonacci(7));
+var fibButton = document.getElementById('fib');
+var fibClick = function(){
+  document.getElementById("fib");
+  result = fibonacci(7);
+  console.log(result);
+  //how to print to page?
+};
+fibButton.addEventListener('click', fibClick());
+
+var gcdButton = document.getElementById('gcd');
+var gcdClick = function(){
+  document.getElementById("gcd");
+  result = gcd(81, 27);
+  console.log(result);
+  //how to print to page?
+};
+gcdButton.addEventListener('click', gcdClick());
+
+var ranButton = document.getElementById('ran');
+var ranClick = function(){
+  document.getElementById("ran");
+  result = randomStudent(81, 27);
+  console.log(result);
+  //how to print to page?
+};
+ranButton.addEventListener('click', ranClick());
