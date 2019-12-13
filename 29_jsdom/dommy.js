@@ -13,7 +13,7 @@ var revertHeading = function(e){
 //Removes item from list when clicked
 var removeItem = function(e){
   //this doesn't work
-  e.remove();
+  e.target.remove();
 };
 
 //lists element and their events
