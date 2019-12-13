@@ -1,12 +1,18 @@
 //changes heading when hovered
 var changeHeading = function(e){
   var h = document.getElementById("h");
-  h.innerHTML = "???";
+  h.innerHTML = e.target.innerHTML;
 };
+
+var revertHeading = function(e){
+  var h = document.getElementById("h");
+  h.innerHTML = "Hello World!";
+}
 
 //Removes item from list when clicked
 var removeItem = function(e){
-
+  //this doesn't work
+  e.remove();
 };
 
 //lists element and their events
@@ -15,10 +21,8 @@ var lis = document.getElementsByTagName("li");
 console.log(lis);
 
 for(var i=0; i<lis.length; i++){
-  lis[i].addEventListener('mouseover', function(e){
-    changeHeading(e, lis[i]);
-  });
-  lis[i].addEventListener('mouseout', changeHeading)
+  lis[i].addEventListener('mouseover', changeHeading);
+  lis[i].addEventListener('mouseout', revertHeading);
   lis[i].addEventListener('click', removeItem);
 };
 
