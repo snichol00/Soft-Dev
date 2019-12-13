@@ -52,19 +52,34 @@ var fib = function(n){
 //add a new fib to the list
 var addFib = function(e){
   console.log(e);
-  var list = document.getElementById("thelist");
+  var list = document.getElementById("fiblist");
   var item = document.createElement("li");
   //which fib do we find? of whole list or number of fibs?
-  n = list.length;
+  n = list.length();
   el = fib(n);
   item.innerHTML = el;
-  list.append(item);
+  fiblist.append(item);
 }
 
+var fibList = [0, 1];
+var fibCount = 0;
 //should use dynamic programming (store recent vals)
 var addFib2 = function(e){
   console.log(e);
-  //???
+  var fList = document.getElementById("fiblist");
+  var newFib = document.createElement("li");
+  if (idx == 0 || idx == 1){
+    newFib.innerHTML = idx;
+  }
+  else{
+    l = fibList.length();
+    newVal = fibList[l - 2] + fibList[l - 1];
+    newFib.innerHTML = newVal;
+    fibList.push(newVal);
+  }
+  fList.append(item);
+  newFib.addEventListener('click', removeItem);
+  fibCount ++;
 }
 
 var fb = document.getElementById("fb");
