@@ -33,6 +33,7 @@ var addItem = function(e){
   var item = document.createElement("li");
   item.innerHTML = "WORD";
   list.append(item);
+  item.addEventListener('click', removeItem);
 };
 
 var button = document.getElementById("b");
