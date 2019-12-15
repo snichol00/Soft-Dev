@@ -51,36 +51,26 @@ var fib = function(n){
 
 //add a new fib to the list
 var addFib = function(e){
-  console.log(e);
-  var list = document.getElementById("fiblist");
+  console.log(ele);
+  var fibList = document.getElementById("fiblist");
   var item = document.createElement("li");
-  //which fib do we find? of whole list or number of fibs?
-  n = list.length();
-  el = fib(n);
-  item.innerHTML = el;
-  fiblist.append(item);
+  newFib = addFib2();
+  item.innerHTML = newFib;
+  fibList.append(item);
+  item.addEventListener('click', removeItem);
 }
 
-var fibList = [0, 1];
-var fibCount = 0;
 //should use dynamic programming (store recent vals)
-var addFib2 = function(e){
-  console.log(e);
-  var fList = document.getElementById("fiblist");
-  var newFib = document.createElement("li");
-  if (idx == 0 || idx == 1){
-    newFib.innerHTML = idx;
-  }
-  else{
-    l = fibList.length();
-    newVal = fibList[l - 2] + fibList[l - 1];
-    newFib.innerHTML = newVal;
-    fibList.push(newVal);
-  }
-  fList.append(item);
-  newFib.addEventListener('click', removeItem);
-  fibCount ++;
-}
+var ele = [0, 1];
+var ele_counter = 0;
+var addFib2 = function() {
+    console.log(ele);
+    var val = ele[0] + ele[1];
+    ele[0] = ele[1];
+    ele[1] = val;
+    return val;
+};
+
 
 var fb = document.getElementById("fb");
 fb.addEventListener('click', addFib);
