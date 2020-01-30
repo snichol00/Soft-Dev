@@ -1,0 +1,24 @@
+{% extends "template.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block header %}
+<h3>LOGIN</h3>
+{% endblock %}
+
+{% block body %}
+<form action="/auth" >
+    <h4>Username:</h4>
+    <input type = "text" name = "username" >
+    <br>
+    <h4>Password:</h4>
+    <input type = "text" name = "password" >
+    <input type = "submit" name = "sub1">
+</form>
+{% endblock %}
+
+{% block footer %}
+<p>Team Sandwich: Sophie Nichol + Kevin Cai</p>
+{% endblock %}

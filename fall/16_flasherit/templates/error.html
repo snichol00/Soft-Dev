@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+
+{% block title %}
+ERROR
+{% endblock %}
+
+{% block header %}
+<h3>Error detected!</h3>
+{% endblock %}
+
+{% block body %}
+{{ errMessage }}
+<br>
+<br>
+<form action="/">
+  <input type="submit" value="Try Again">
+</form>
+{% endblock %}
+
+{% block footer %}
+<p>Team Sandwich: Sophie Nichol + Kevin Cai</p>
+{% endblock %}

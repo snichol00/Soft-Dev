@@ -1,0 +1,38 @@
+body {
+    background-color:#606060;
+    padding:0.5%;
+  }
+h1 {
+    text-align:center;
+    margin: 0;
+    color: white;
+    background-color:#B8B8B8;
+    padding: 1%;
+}
+div {
+    background-color:#808080;
+}
+.navbar {
+    position: fixed;
+    padding:10px;
+}
+h3{
+    margin: 5px;
+}
+ul {
+    list-style: none;
+    padding:0;
+}
+a {
+    color:white;
+}
+.main {
+    margin: 10%;
+    padding: 10px;
+}
+.footer{
+    background-color:#484848;
+    color:#808080;
+    text-align:right;
+    padding: 1%;
+}
