@@ -1,12 +1,12 @@
-#Team Hippo- Sophie Nichol, Manfred Tan, Calvin Chu
-#SoftDev1 pd9
-#K11 - Forms
-#2019-09-25
-
+import os
 from flask import Flask, render_template, request
 import cgi
-app = Flask(__name__)
 
+os.path.dirname(__file__)
+DIR = os.path.dirname(__file__)
+DIR += '/'
+
+app = Flask(__name__)
 
 @app.route("/")
 def makeForm():
