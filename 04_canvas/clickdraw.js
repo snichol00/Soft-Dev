@@ -23,6 +23,21 @@ var clear = function(e){
   var c = document.getElementById("slate");
   var ctx = c.getContext("2d");
   ctx.clearRect(0,0,c.width,c.height);
+};
 
 var clearbutton = document.getElementById('clear');
 clearbutton.addEventListener('click', clear);
+
+var draw = function(e){
+  var c = document.getElementById("slate");
+  var ctx = c.getContext("2d");
+  if (drawType == true){
+    ctx.fillRect(e.pageX,e.pageY,5,10);
+  }
+  else{
+    ctx.fillRect(e.pageX, e.pageY, 1, 1)
+  }
+};
+
+var clickdraw = document.getElementById("slate");
+clickdraw.addEventListener('click', draw);
