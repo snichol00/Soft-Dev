@@ -1,11 +1,40 @@
 var canvas = document.getElementById("playground");
 var ctx = canvas.getContext("2d");
+var stopButton = document.getElementById('stop');
 
-//mode either "rect" or "dot"
-var curmode = "dot";
+var id = 0;
+var rad = 1;
+var inc = 1;
+var stopped = true;
 
-lx = null
-ly = null
+var drawCircle = function(){
+  //check bounds
+  if (rad >= 200 && inc == 1){
+    inc = -1;
+  }
+  if (rad <= 0 && inc == -1){
+    inc = 1;
+  }
+  rad += inc;
+  ctx.beginPath();
+  ctx.arc(200, 200, rad, 0, 2 * Math.PI);
+  ctx.fill();
+  //update id
+  if (id != 0) {
+    id = window.requestAnimationFrame(drawCircle());
+  }
+};
+
+var start = function(e){
+  if (stopped == true){
+    id = window.requestAnimationFrame(drawCircle);
+    drawCircle();
+    stopped = false;
+  }
+};
+var startButton = document.getElementById('start');
+startButton.addEventListener('click', start);
+
 
 canvas.addEventListener("click", (e) => {
     console.log("here");
