@@ -1,6 +1,5 @@
 var canvas = document.getElementById("playground");
 var ctx = canvas.getContext("2d");
-var stopButton = document.getElementById('stop');
 
 var id = 0;
 var rad = 1;
@@ -8,6 +7,8 @@ var inc = 1;
 var stopped = true;
 
 var drawCircle = function(){
+  ctx.clearRect(0,0,500,500);
+  ctx.fillStyle = "blue";
   //check bounds
   if (rad >= 200 && inc == 1){
     inc = -1;
@@ -21,7 +22,7 @@ var drawCircle = function(){
   ctx.fill();
   //update id
   if (id != 0) {
-    id = window.requestAnimationFrame(drawCircle());
+    id = window.requestAnimationFrame(drawCircle);
   }
 };
 
@@ -35,32 +36,12 @@ var start = function(e){
 var startButton = document.getElementById('start');
 startButton.addEventListener('click', start);
 
-
-canvas.addEventListener("click", (e) => {
-    console.log("here");
-    cx = e.pageX - canvas.offsetLeft;
-    cy = e.pageY - canvas.offsetTop;
-    ctx.fillStyle = "blue";
-    ctx.beginPath();
-    ctx.arc(cx, cy, 10, 0, 2 * Math.PI);
-    ctx.fill();
-    if(lx != null && ly != null){
-      ctx.beginPath();
-      ctx.moveTo(lx, ly);
-      ctx.lineTo(cx, cy);
-      ctx.stroke();
-    }
-    lx = cx;
-    ly = cy;
-    window.requestAnimationFrame()
-    requestAnimationFrame(callback)
-    cancelAnimationFrame(id)
-});
-
-document.getElementById("clear").addEventListener("click", () => {
-  //console.log("clear");
-  ctx.fillStyle = "white";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  lx = null;
-  ly = null;
-});
+var stop = function(){
+  if (stopped == false){
+    window.cancelAnimationFrame(id);
+    stopped = true;
+    id = 0;
+  }
+}
+var stopButton = document.getElementById('stop');
+stopButton.addEventListener('click', stop);
