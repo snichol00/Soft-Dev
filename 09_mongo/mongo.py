@@ -59,6 +59,6 @@ def zipscore(zip, thres):
 #Something more clever.
 
 borough("Manhattan")
-zipcode("10282")
-zipgrade("10282", 'A')
-zipscore("10282", 'B')
+zipcode("10013")
+zipgrade("10013", 'A')
+zipscore("10013", 'B')
