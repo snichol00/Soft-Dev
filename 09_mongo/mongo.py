@@ -49,12 +49,9 @@ def zipgrade(zip, grade):
 
 #All restaurants in a specified zip code with a score below a specified threshold.
 def zipscore(zip, thres):
-    print("Restaurants in zip code ", zip, " with grade below ", thres)
-    for res in restaurants.find( {"address.zipcode": zip}):
-        sel = res['grades']
-        for i in range(len(sel)):
-            if (sel[i]['grade'] > thres):
-                print(res)
+    num = restaurants.count_documents({"address.zipcode": zip, "grades.0.score": {"$lt": int(thres)}})
+    print(num, " restaurants in zip code ", zip, " with grade below ", thres)
+    return restaurants.find( {"address.zipcode": zip, "grades.0.score": {"$lt": int(thres)}})
 
 #Something more clever.
 
