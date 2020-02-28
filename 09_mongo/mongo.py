@@ -18,7 +18,7 @@ def ingest(f):
 
 #All restaurants in a specified borough.
 def borough(bor):
-    for r in col.find({ "borough": bor }):
+    for res in col.find({ "borough": bor }):
 
 
 
