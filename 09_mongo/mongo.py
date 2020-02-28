@@ -12,12 +12,14 @@ if (col.count() == 0):
     for line in con:
         col.insert_one(loads(line))
 
-print(data)
+def ingest(f):
+    with open(f) as _f:
+        return loads(f'[{",".join(map(lambda s: s[:-1], _f))}]')
 
 #All restaurants in a specified borough.
 def borough(bor):
-    for r in col.find({ "borough": b }):
-        
+    for r in col.find({ "borough": bor }):
+
 
 
 #All restaurants in a specified zip code.
