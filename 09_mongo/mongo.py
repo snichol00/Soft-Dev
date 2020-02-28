@@ -1,24 +1,26 @@
-import pymongo, idon
+import json, pymongo
 from pymongo import MongoClient
+client = MongoClient(port=27017)
 from bson.json_util import loads
-client = MongoClient('localhost', 27017)
 
-db = client['testdata']
-col = db['restaurants']
+#create test database
+db = client['test'] # creates if doesn't already exist
+#create restaurants collection
+restaurants = db['restaurants']
 
-if (col.count() == 0):
-    file = open("dataset.json", "r")
-    con = file.readlines()
-    for line in con:
-        col.insert_one(loads(line))
+def get_data():
+    json_file = open('data.json')
+    stuff = json_file.readlines()
+    for line in stuff:
+        line.replace("$data","date")
+        restaurants.insert_one(loads(line))
 
-def ingest(f):
-    with open(f) as _f:
-        return loads(f'[{",".join(map(lambda s: s[:-1], _f))}]')
+get_data()
+len = restaurants.count()
 
 #All restaurants in a specified borough.
-def borough(bor):
-    for res in col.find({ "borough": bor }):
+#def borough(bor):
+    #for res in col.find({ "borough": bor }):
 
 
 
