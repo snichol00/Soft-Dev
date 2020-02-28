@@ -15,7 +15,14 @@ def get_data():
         line.replace("$data","date")
         restaurants.insert_one(loads(line))
 
-get_data()
+
+def ingest(f):
+    with open(f) as _f:
+        return loads(f'[{",".join(map(lambda s: s[:-1], _f))}]')
+
+#get_data()
+data = ingest("data.json")
+restaurants.insert(data)
 len = restaurants.count()
 
 #All restaurants in a specified borough.
