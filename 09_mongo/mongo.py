@@ -20,25 +20,25 @@ len = restaurants.count()
 
 #All restaurants in a specified borough.
 def borough(bor):
-    output = restaurants.find({ "borough": bor }):
     print("Restaurants in borough: ", bor)
-    print(output)
+    for res in restaurants.find({ "borough": bor }):
+        print(res)
 
 #All restaurants in a specified zip code.
 def zipcode(zip):
-    output = restaurants.find( {"address.zipcode": zip})
     print("Restaurants in zip code ", zip)
-    print(output)
+    for res in restaurants.find( {"address.zipcode": zip}):
+        print(res)
 
 #All restaurants in a specified zip code and with a specified grade.
 def zipgrade(zip, grade):
-    output = restaurants.find( {"address.zipcode": zip, "grades.0.grade": grade})
     print("Restaurants in zip code ", zip, " and grade ", grade)
-    print(output)
+    for res in restaurants.find( {"address.zipcode": zip, "grades.0.grade": grade}):
+        print(res)
 
 #All restaurants in a specified zip code with a score below a specified threshold.
 def zipscore(zip, thres):
-    output = restaurants.find( {"address.zipcode": zip, "grades.0.score": {"$lt": int(thres)}})
     print("Restaurants in zip code ", zip, " with grade below ", grade)
-    print(output)
+    for res in restaurants.find( {"address.zipcode": zip, "grades.0.score": {"$lt": int(thres)}}):
+        print(res)
 #Something more clever.
