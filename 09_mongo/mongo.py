@@ -52,7 +52,7 @@ def zipscore(zip, thres):
     print("Restaurants in zip code ", zip, " with grade below ", thres)
     for res in restaurants.find( {"address.zipcode": zip}):
         sel = res['grades']
-        for grade in range(len(grades)):
+        for grade in range(len(sel)):
             if (sel[grade]['grade'] > thres):
                 print(res)
 
