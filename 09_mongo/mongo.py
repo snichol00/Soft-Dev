@@ -9,7 +9,7 @@ db = client['test'] # creates if doesn't already exist
 restaurants = db['restaurants']
 
 def get_data():
-    json_file = open('data.json')
+    json_file = open('data3.json')
     stuff = json_file.readlines()
     for line in stuff:
         line.replace("$date","date")
@@ -19,33 +19,28 @@ def get_data():
 #     with open(f) as _f:
 #         return loads(f'[{",".join(map(lambda s: s[:-1], _f))}]')
 
-if restaurants.estimated_document_count() == 0:
-    get_data()
-#data = ingest("data.json")
-#restaurants.insert(data)
-len = restaurants.estimated_document_count()
-print(len)
-# json_string = json_file.read()
-# json_string.replace("$date", "date")
-   # data = json.load(json_file)
+def get_boro(boro):
+    return restaurants.find( {"borough": boro} )
 
 #All restaurants in a specified borough.
 def borough(bor):
-    print("Restaurants in borough: ", bor)
-    for res in restaurants.find({ "borough": bor }):
-        print(res)
+    num = restaurants.count_documents({"borough": bor})
+    print(num," restaurants in borough: ", bor)
+    out = restaurants.find({ "borough": bor })
+    return out
+        #print(res)
 
 #All restaurants in a specified zip code.
 def zipcode(zip):
-    print("Restaurants in zip code ", zip)
-    for res in restaurants.find( {"address.zipcode": zip}):
-        print(res)
+    num = restaurants.count_documents({"address.zipcode": zip})
+    print(num," restaurants in zip code ", zip)
+    return restaurants.find( {"address.zipcode": zip})
 
 #All restaurants in a specified zip code and with a specified grade.
 def zipgrade(zip, grade):
-    print("Restaurants in zip code ", zip, " and grade ", grade)
-    for res in restaurants.find( {"address.zipcode": zip, "grades.0.grade": grade}):
-        print(res)
+    num = restaurants.count_documents({"address.zipcode": zip, "grades.0.grade": grade})
+    print(num, " restaurants in zip code ", zip, " and grade ", grade)
+    return restaurants.find( {"address.zipcode": zip, "grades.0.grade": grade})
 
 #All restaurants in a specified zip code with a score below a specified threshold.
 def zipscore(zip, thres):
@@ -54,8 +49,31 @@ def zipscore(zip, thres):
     return restaurants.find( {"address.zipcode": zip, "grades.0.score": {"$lt": int(thres)}})
 
 #Something more clever.
+#Returns all restaurants in a specified zip code matching the specified cuisine.
+#cuisine: "American", "Hamburgers", "Bakery", "Chinese", etc.
+def zipcuisine(zip, cuisine):
+    num = restaurants.count_documents({"address.zipcode": zip, "cuisine": cuisine})
+    print(num, " ", cuisine, " restaurants in zip code ",zip)
+    return restaurants.find({"address.zipcode": zip, "cuisine": cuisine})
 
-borough("Manhattan")
-zipcode("10013")
-zipgrade("10013", 'A')
-zipscore("10013", 'B')
+
+#only populate restaurants if empty
+if restaurants.estimated_document_count() == 0:
+    get_data()
+len = restaurants.estimated_document_count()
+print("Total restaurants found: ",len)
+# print(restaurants.count_documents({"borough": "Bronx"}))
+borough("Bronx")
+zipcode("10462")
+zipgrade("10462","A")
+zipscore("10462",15)
+zipcuisine("10002","Chinese")
+
+
+
+
+#data = ingest("data.json")
+#restaurants.insert(data)
+# json_string = json_file.read()
+# json_string.replace("$date", "date")
+   # data = json.load(json_file)
