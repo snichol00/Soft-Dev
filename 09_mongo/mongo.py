@@ -53,3 +53,8 @@ def zipscore(zip, thres):
     for res in restaurants.find( {"address.zipcode": zip, "grades.0.score": {"$lt": int(thres)}}):
         print(res)
 #Something more clever.
+
+borough("Manhattan")
+zipcode("10282")
+grade("10282", 'A')
+thres("10282", 'B')
