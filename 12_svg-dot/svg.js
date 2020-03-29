@@ -31,9 +31,9 @@ canvas.addEventListener("click", (e) => {
 });
 
 document.getElementById("clear").addEventListener("click", () => {
-  //console.log("clear");
-  svg.fillStyle = "white";
-  svg.fillRect(0,0,canvas.width,canvas.height);
-  lx = null;
-  ly = null;
+  while (svg.lastChild) {
+    svg.removeChild(svg.lastChild);
+  }
+  lx = null
+  ly = null
 });
