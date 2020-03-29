@@ -1,33 +1,36 @@
+//Emory Walsh & Sophie Nichol
+//Softdev pd09
+//K12 -- Connect The Dots
+//2020-03-30
+
 var svg = document.getElementById("vimage");
 
-//past x / y values
-lx = null;
-ly = null;
+lx = null
+ly = null
 
-canvas.addEventListener("click", (e) => {
-    // current x/y values
-    cx = e.pageX;
-    cy = e.pageY;
-    //make a circle at each new click
-    var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    c.setAttributeNS(null, 'style', 'fill: black; stroke: black; stroke-width: 1px;' );
-    c.setAttributeNS(null, 'cx', cx);
-    c.setAttributeNS(null, 'cy', cy);
-    c.setAttributeNS(null, 'r', 10);
-    svg.appendChild(c);
-    // if it's not the first circle, draw a line
-    if(lx != null && ly != null){
-      var l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      l.setAttributeNS(null, 'style', 'fill:none; stroke: black; stroke-width: 1px;' );
-      l.setAttributeNS(null, 'x1', lx);
-      l.setAttributeNS(null, 'x2', cx);
-      l.setAttributeNS(null, 'y1', ly);
-      l.setAttributeNS(null, 'y2', cy);
-      svg.appendChild(l);
-    }
-    //adjust x and y values
-    cx = lx;
-    cy = ly;
+svg.addEventListener("click", (e) => {
+  x = e.pageX-5;
+  y = e.pageY-20;
+
+  var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  circle.setAttributeNS(null, 'cx', x);
+  circle.setAttributeNS(null, 'cy', y);
+  circle.setAttributeNS(null, 'r', 5);
+  circle.setAttributeNS(null, 'style', 'fill: blue; stroke: blue; stroke-width: 1px;' );
+  svg.appendChild(circle);
+
+  if(lx != null && ly != null){
+    var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttributeNS(null, 'x1', lx);
+    line.setAttributeNS(null, 'y1', ly);
+    line.setAttributeNS(null, 'x2', x);
+    line.setAttributeNS(null, 'y2', y);
+    line.setAttributeNS(null, 'style', 'fill: none; stroke: blue; stroke-width: 1px;' );
+    svg.appendChild(line);
+  }
+
+  lx = x
+  ly = y
 });
 
 document.getElementById("clear").addEventListener("click", () => {
