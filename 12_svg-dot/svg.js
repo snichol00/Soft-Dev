@@ -1,24 +1,33 @@
 var svg = document.getElementById("vimage");
 
-lx = null
-ly = null
+//past x / y values
+lx = null;
+ly = null;
 
 canvas.addEventListener("click", (e) => {
-    console.log("here");
-    cx = e.pageX - canvas.offsetLeft;
-    cy = e.pageY - canvas.offsetTop;
-    svg.fillStyle = "blue";
-    svg.beginPath();
-    svg.arc(cx, cy, 10, 0, 2 * Math.PI);
-    svg.fill();
+    // current x/y values
+    cx = e.pageX;
+    cy = e.pageY;
+    //make a circle at each new click
+    var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c.setAttributeNS(null, 'style', 'fill: black; stroke: black; stroke-width: 1px;' );
+    c.setAttributeNS(null, 'cx', cx);
+    c.setAttributeNS(null, 'cy', cy);
+    c.setAttributeNS(null, 'r', 10);
+    svg.appendChild(c);
+    // if it's not the first circle, draw a line
     if(lx != null && ly != null){
-      svg.beginPath();
-      svg.moveTo(lx, ly);
-      svg.lineTo(cx, cy);
-      svg.stroke();
+      var l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      l.setAttributeNS(null, 'style', 'fill:none; stroke: black; stroke-width: 1px;' );
+      l.setAttributeNS(null, 'x1', lx);
+      l.setAttributeNS(null, 'x2', cx);
+      l.setAttributeNS(null, 'y1', ly);
+      l.setAttributeNS(null, 'y2', cy);
+      svg.appendChild(l);
     }
-    lx = cx;
-    ly = cy;
+    //adjust x and y values
+    cx = lx;
+    cy = ly;
 });
 
 document.getElementById("clear").addEventListener("click", () => {
