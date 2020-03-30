@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font-family: sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #0050a1;
+  padding: 10px;
+  text-align: center;
+  font-size: 25px;
+  color: white;
+}
+
+.sub {
+  margin-left: 5%;
+}
+
+.main {
+  background-color:#D3D3D3;
+      padding:.5%;
+}
+
+</style>
+
+  <header>
+    <h1> Scala </h1>
+  </header>
+  <body>
+    <div class ="main">
+    <h3> Overview </h3>
+    <p> Scala stands for "scalable language," meaning that it can be scaled up or down to meet the user's needs,
+      using a combination of object-oriented and functional programming. Object-oriented programming will be familiar to java users, and includes the four key tenets of polymorphism, encapsulation, inheritance, and abstraction.
+      In many ways, Scala is a more concise and intuitive version of Java, but its use of functional programming (which will be review below) makes it a substantially different language.
+    </p>
+
+    <h3>Improvements on Java</h3>
+    <ul>
+      <li>Scalable: Better support for backend operations</li>
+      <li>Concise: Java tends to be repetitive and demands that the user manually write a lot of functions that are basic and widely used, while scala is a smarter and less verbose language</li>
+      <li>Readability: Without extra clutter, code tends to be more easily digestible and the functions seem more intuitive, allowing easier debugging</li>
+    </ul>
+
+    <h3>Key Features</h3>
+    <ul>
+      <li>Object-oriented: Modularity makes it easier to troubleshoot</li>
+      <li>Statically typed: Catches errors at compile time, before execution</li>
+      <li>Lazy computation: Only computes what is necessary, which makes it run faster</li>
+      <li>Type safe: doesn’t allow the use of incompatible data types</li>
+    </ul>
+
+    <h3> Functional Programming</h3>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Functional programming is a way of computing that focuses less on defining a function step-by-step and more on the outcome, creating more concise but less explicit code. It relies on the <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;machine to fill in the steps in between.</p>
+    <div class="sub">
+    <h4> Key Features </h4>
+    <ul>
+      <li>Declarative rather than imperative: meaning it's more focused on the what is accomplished than how it's done</li>
+      <li>Pure functions: Always the same output for every input</li>
+      <li>Avoids shared state: Shared state is any variables or objects that exist in the same scope.
+        Shared state can lead to very common bugs such as the race condition, a bug that happens when two
+        concurrent functions which mutate the same variable or object cause undesirable effects.</li>
+      <li>Immutability: Prevents lossy data flow and the bugs that are associated with mutable data.</li>
+    </ul>
+  </div>
+
+    <h3> Syntax </h3>
+      <ul>
+        <li>Type "scala" into your terminal to experiment with Scala syntax, which is generally similar to Java</li>
+        <li>Defining variable types is not necessary in Scala, but there are two main types:
+          <ul>
+            <li>Val: Immutable, and Scala automatically creates a get function</li>
+            <li>Var: Mutable, and Scala creates both a getter and setter for the variable</li>
+          </ul>
+        </li>
+        <li>Sample "hello world" function: <br><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;object HelloWorld{ <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def main(args: Array[String]) { <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;println("Hello World!") <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;}
+      </li>
+      </ul>
+
+    <h3> Classes </h3>
+    <ul>
+      <li>Allows for multiple constructors(as long as they have different parameters) and default values for fields</li>
+      <li>The default constructor can essentially be contained in the first line of the class, because when you include inputs for a class scala will automatically make a constructor and getter or setters if applicable</li>
+      <li>Mixins: the user can extend Scala traits with a class or abstract class</li>
+      <li>Case Classes:
+        <ul>
+          <li>Immutable</li>
+          <li>Don't require the "new" keyword, because case classes have an apply method that takes care of object creation</li>
+          <li>Compares by structure rather than reference</li>
+          <li>Pattern matching: using the keyword match, you are able to write methods that take in a variable and figure out what kind of case class it is.</li>
+        </ul>
+      </li>
+
+    </div>
+  </body>
+</html>
