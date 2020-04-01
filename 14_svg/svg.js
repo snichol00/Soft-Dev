@@ -41,7 +41,6 @@ var change = function(e){
 
 
 var move = function(e) {
-  window.requestAnimationFrame(move);
   var allC = document.getElementsByTagName("circle");
   for (var i = 0; i < allC.length; i++) {
     var xCor =  parseInt(allC[i].getAttribute("cx")) + parseInt(allC[i].getAttribute("xInc"));
@@ -56,6 +55,7 @@ var move = function(e) {
     allC[i].setAttribute("cy", yCor);
     allC[i].setAttribute("cx", xCor);
   }
+  window.requestAnimationFrame(move);
 });
 
 document.getElementById("clear").addEventListener("click", () => {
