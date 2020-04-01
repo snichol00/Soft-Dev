@@ -4,7 +4,8 @@
 //2020-03-30
 
 var svg = document.getElementById("vimage");
-var move = ddocument.getElementById("move");
+var motion = document.getElementById("move");
+var extra = document.getElementById("xtra");
 
 var go = function(e){
   if (e.target == svg) {
@@ -38,7 +39,9 @@ var change = function(e){
   }
 }
 
-var move = function() {
+
+var move = function(e) {
+  window.requestAnimationFrame(move);
   var allC = document.getElementsByTagName("circle");
   for (var i = 0; i < allC.length; i++) {
     var xCor =  parseInt(allC[i].getAttribute("cx")) + parseInt(allC[i].getAttribute("xInc"));
@@ -61,5 +64,16 @@ document.getElementById("clear").addEventListener("click", () => {
   }
 });
 
+//change size of circles to random
+var Xtra = function(e) {
+  var allC = document.getElementsByTagName("circle");
+  var num = allC.length;
+  for (var i = 0; i < num; i++) {
+    allC[i].setAttribute("cx", Math.floor(Math.random() * 500));
+    allC[i].setAttribute("cy", Math.floor(Math.random() * 500));
+  }
+}
+
+extra.addEventListener('click', Xtra);
 svg.addEventListener('click', go);
-move.addEventListener('click', move);
+motion.addEventListener('click', move);
