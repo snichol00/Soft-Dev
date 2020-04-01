@@ -40,9 +40,6 @@ var change = function(e){
 document.getElementById("move").addEventListener("click", () => {
   var allC = document.getElementsByTagName("circle");
   for (var i = 0; i < allC.length; i++) {
-    var circle = allC[i];
-    xInc = 1;
-    yInc = 1;
     var xCor =  parseInt(allC[i].getAttribute("cx")) + parseInt(allC[i].getAttribute("xInc"));
     var yCor =  parseInt(allC[i].getAttribute("cy")) + parseInt(allC[i].getAttribute("yInc"));
     //if out of bounds change direction
@@ -52,6 +49,9 @@ document.getElementById("move").addEventListener("click", () => {
     if (xCor <= 5 || xCor >= 495){
       allC[i].setAttribute("xInc", parseInt(allC[i].getAttribute("xInc") * -1));
     }
+    allC[i].setAttribute("cy", yCor);
+    allC[i].setAttribute("cx", xCor);
+  }
 });
 
 document.getElementById("clear").addEventListener("click", () => {
