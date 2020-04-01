@@ -4,6 +4,7 @@
 //2020-03-30
 
 var svg = document.getElementById("vimage");
+var move = ddocument.getElementById("move");
 
 var go = function(e){
   if (e.target == svg) {
@@ -37,7 +38,7 @@ var change = function(e){
   }
 }
 
-document.getElementById("move").addEventListener("click", () => {
+var move = function() {
   var allC = document.getElementsByTagName("circle");
   for (var i = 0; i < allC.length; i++) {
     var xCor =  parseInt(allC[i].getAttribute("cx")) + parseInt(allC[i].getAttribute("xInc"));
@@ -61,3 +62,4 @@ document.getElementById("clear").addEventListener("click", () => {
 });
 
 svg.addEventListener('click', go);
+move.addEventListener('click', move);
