@@ -16,6 +16,8 @@ var go = function(e){
   c.setAttributeNS(null, 'r', 10);
   c.setAttribute("r", "10");
   c.setAttribute("fill", "blue");
+  c.setAttribute("xInc", "1");
+  c.setAttribute("yInc", "1");
   c.setAttribute("stroke", "blue");
   c.addEventListener('click', change);
   svg.appendChild(c);
@@ -34,6 +36,23 @@ var change = function(e){
     e.target.setAttribute("fill", "blue");
   }
 }
+
+document.getElementById("move").addEventListener("click", () => {
+  var allC = document.getElementsByTagName("circle");
+  for (var i = 0; i < allC.length; i++) {
+    var circle = allC[i];
+    xInc = 1;
+    yInc = 1;
+    var xCor =  parseInt(allC[i].getAttribute("cx")) + parseInt(allC[i].getAttribute("xInc"));
+    var yCor =  parseInt(allC[i].getAttribute("cy")) + parseInt(allC[i].getAttribute("yInc"));
+    //if out of bounds change direction
+    if (yCor <= 5 || yCor >= 495){
+      allC[i].setAttribute("yInc", parseInt(allC[i].getAttribute("yInc") * -1));
+    }
+    if (xCor <= 5 || xCor >= 495){
+      allC[i].setAttribute("xInc", parseInt(allC[i].getAttribute("xInc") * -1));
+    }
+});
 
 document.getElementById("clear").addEventListener("click", () => {
   while (svg.lastChild) {
