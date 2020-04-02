@@ -1,0 +1,36 @@
+Lauren Pehlivanian & Sophie Nichol
+Softdev pd09
+K15
+2020-04-01
+
+Version 1:
+  Prediction:
+    - an alert should be displayed that prints the word that was clicked
+  Observations:
+    - it did what we predicted
+
+Version 2:
+  Prediction:
+    - the table will print, but the alerts might not work / be overriden
+  Observations:
+    - printed three alerts
+    - first was the tds, then the trs, then the entire table
+  Questions:
+    - why would you want multiple alerts in a row instead of one large alert?
+    - why that order?
+
+Version 3:
+  Prediction:
+    - it looks similar to the last one, so maybe it will print the same but different order
+    - the commented line might stop the alerts
+  Observations:
+    - it acted the same as #2, but in a different order
+    - the commented section made only the whole table print
+  Question:
+    - What does stopPropagation target?
+
+Version 4:
+  Prediction:
+    - the order of the alerts will change again
+  Observation:
+    - Our prediction was correct and it looks like it prints the whole table first then down to the smallest.
