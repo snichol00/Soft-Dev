@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-------------<!DOCTYPE html>
 <!--D3 demo: hardcoded bars removed, to be generated fr data-->
 <!--
     Can yield a horizontal bar chart if properly bound to data
@@ -6,10 +6,9 @@
     ...but will yield only blank page at first.
   -->
 <!--
-Lauren Pehlivanian, Sophie Nichol
-Team StomachNeedle
+Emory Walsh & Sophie Nichol
 SoftDev2 pd9
-2020-04-03
+2020-04-08
 -->
 
 <style>
@@ -50,13 +49,32 @@ SoftDev2 pd9
     barEnter.text(function(d) { return d; });
   -------------------------------->
 
-  <!-- Our observations:
-  * You can enter a function directly into the parameter of a function (for example to text())
-  * You can add elements repeatedly using append(). The element doesn't already have to exist in the HTML and you don't have to clone it.
-  * It is somewhat object-oriented (?) because bar can call the functions onto itself.
-  * You can concatenate strings (which is something you couldn't do in Java)
-  Questions: -stuff we were originally wondering
-  * What is the point of doing enter() before append()?
-  * What can you join to an HTML element? Does it have to be an array?
-  * How could you create more than one div for each element in the array?
-  * What is the parameter d passed into the function for style() and text()? Is it each element of the array?  -->
+
+<!-- Prediction:
+* I think that the same bars will come up as last time, except the bars will all have different widths.
+<!-- Our observations:
+* You can enter a function directly into the parameter of a function (for example to text())
+* You can add elements repeatedly using append(). The element doesn't already have to exist in the HTML and you don't have to clone it.
+* It is somewhat object-oriented (?) because bar can call the functions onto itself.
+* You can concatenate strings (which is something you couldn't do in Java)
+* data is the same array after
+* bar == Pt {_groups: Array(1), _parents: Array(1)}
+    _groups: [NodeList(0)]
+    _parents: [div.chart]
+    __proto__: Object
+* barEnter == Pt {_groups: Array(1), _parents: Array(1)}
+    _groups: [Array(6)]
+    _parents: [div.chart]
+    __proto__: Object
+* barUpdate == Pt {_groups: Array(1), _parents: Array(1), _enter: Array(1), _exit: Array(1)}
+    _groups: [Array(6)]
+    _parents: [div.chart]
+    _enter: [Array(6)]
+    _exit: [Array(0)]
+    __proto__: Object
+Questions: -stuff we were originally wondering
+* What is the point of doing enter() before append()?
+* What can you join to an HTML element? Does it have to be an array?
+* How could you create more than one div for each element in the array?
+* What is the parameter d passed into the function for style() and text()? Is it each element of the array?
+------------------->
