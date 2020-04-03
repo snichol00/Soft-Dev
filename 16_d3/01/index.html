@@ -6,9 +6,10 @@
     ...but will yield only blank page at first.
   -->
 <!--
-Clyde "Thluffy" Sinclair
-SoftDev2 pd0
-2099-12-31
+Lauren Pehlivanian, Sophie Nichol
+Team StomachNeedle
+SoftDev2 pd9
+2020-04-03
 -->
 
 <style>
@@ -28,7 +29,7 @@ SoftDev2 pd0
 <script src="http://d3js.org/d3.v5.min.js"
 	charset="utf-8"></script>
 
-<!--
+<!--------------------------------
     Entering the following commands via console will
     incrementally re-create your hardcoded chart...
     //Init your data:
@@ -49,7 +50,13 @@ SoftDev2 pd0
     barEnter.text(function(d) { return d; });
   -------------------------------->
 
-  <!--
-We predicted that it would act similarly to the previous example, except create each element of the graph (the bars vs the text) step by step
-Besides adding each element, we were surprised that d3 actually created the element and then modified it which would provide more dynamic programming
-  -->
+  <!-- Our observations:
+  * You can enter a function directly into the parameter of a function (for example to text())
+  * You can add elements repeatedly using append(). The element doesn't already have to exist in the HTML and you don't have to clone it.
+  * It is somewhat object-oriented (?) because bar can call the functions onto itself.
+  * You can concatenate strings (which is something you couldn't do in Java)
+  Questions: -stuff we were originally wondering
+  * What is the point of doing enter() before append()?
+  * What can you join to an HTML element? Does it have to be an array?
+  * How could you create more than one div for each element in the array?
+  * What is the parameter d passed into the function for style() and text()? Is it each element of the array?  -->
