@@ -10,8 +10,8 @@ Emory Walsh & Sophie Nichol
 SoftDev2 pd9
 2020-04-08
 -->
-  <script src="http://d3js.org/d3.v5.min.js"
-  charset="utf-8"></script>
+  <script src="http://d3js.org/d3.v5.js"
+    charset="utf-8"></script>
 
   <title>K17</title>
 
@@ -30,12 +30,15 @@ SoftDev2 pd9
   </div>
 
   <script>
-      //transition
-    	d3.select("body").transition().
-          style("background-color","black");
+    //transition
+    d3.select("body").transition()
+      .style("background-color", "black");
+  </script>
+
+  <script>
       // let's make a bar chart
       var data = [4, 8, 15, 16, 23, 42];
-      const div = d3.create("div")
+      var div = d3.create("div")
           .style("font", "10px sans-serif")
           .style("text-align", "right")
           .style("color", "white");
@@ -47,9 +50,7 @@ SoftDev2 pd9
           .style("margin", "1px")
           .style("width", d => `${d * 10}px`)
           .text(d => d);
-      return div.node();
     </script>
-  </div>
 
 
 
