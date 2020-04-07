@@ -1,4 +1,4 @@
-<!-------------<!DOCTYPE html>
+<!DOCTYPE html>
 <!--D3 demo: hardcoded bars removed, to be generated fr data-->
 <!--
     Can yield a horizontal bar chart if properly bound to data
@@ -10,47 +10,48 @@ Emory Walsh & Sophie Nichol
 SoftDev2 pd9
 2020-04-08
 -->
-<body>
-<style>
-  .chart div {
-  font: 10px sans-serif;
-  background-color: steelblue;
-  text-align: right;
-  padding: 3px;
-  margin: 1px;
-  color: white;
-  }
-</style>
-</body>
+  <script src="http://d3js.org/d3.v5.min.js"
+  charset="utf-8"></script>
 
-<div class="chart">
-</div>
+  <title>K17</title>
 
-<script>
-  //transition
-	d3.select("body").transition().
-      style("background-color","black");
-  // let's make a bar chart
-  var data = [4, 8, 15, 16, 23, 42];
-  const div = d3.create("div")
-      .style("font", "10px sans-serif")
-      .style("text-align", "right")
-      .style("color", "white");
+  <style>
+    .chart div {
+      font: 10px sans-serif;
+      background-color: steelblue;
+      text-align: right;
+      padding: 3px;
+      margin: 1px;
+      color: white;
+    }
+  </style>
 
-  div.selectAll("div")
-    .data(data)
-    .join("div")
-      .style("background", "steelblue")
-      .style("padding", "3px")
-      .style("margin", "1px")
-      .style("width", d => `${d * 10}px`)
-      .text(d => d);
+  <div class="chart">
+  </div>
 
-  return div.node();
-</script>
+  <script>
+      //transition
+    	d3.select("body").transition().
+          style("background-color","black");
+      // let's make a bar chart
+      var data = [4, 8, 15, 16, 23, 42];
+      const div = d3.create("div")
+          .style("font", "10px sans-serif")
+          .style("text-align", "right")
+          .style("color", "white");
+      div.selectAll("div")
+        .data(data)
+        .join("div")
+          .style("background", "steelblue")
+          .style("padding", "3px")
+          .style("margin", "1px")
+          .style("width", d => `${d * 10}px`)
+          .text(d => d);
+      return div.node();
+    </script>
+  </div>
 
-<script src="http://d3js.org/d3.v5.min.js"
-	charset="utf-8"></script>
+
 
 <!--------------------------------
     Entering the following commands via console will
