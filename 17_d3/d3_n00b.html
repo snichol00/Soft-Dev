@@ -38,6 +38,9 @@ SoftDev2 pd9
   <script>
       // let's make a bar chart
       var data = [4, 8, 15, 16, 23, 42];
+      x = d3.scaleLinear()
+        .domain([0, d3.max(data)])
+        .range([0, 420])
       var div = d3.select(".chart")
         .style("font", "10px sans-serif")
         .style("text-align", "right")
