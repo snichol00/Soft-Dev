@@ -20,7 +20,7 @@
            "translate(" + margin.left + "," + margin.top + ")");
 
  // get the data
- d3.csv("data.csv", function(data) {
+ d3.csv("/data.csv", function(data) {
 
    // X axis: scale and draw:
    var x = d3.scaleLinear()
