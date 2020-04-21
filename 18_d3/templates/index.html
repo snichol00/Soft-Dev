@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>SAT Scores</title>
-  <style>
+  <head>
+    <meta charset="UTF-8">
+    <title>2010 SAT Data</title>
+  </head>
+  <body>
+    <h1>2010 New York SAT Data Histogram</h1>
+    <p>
+      Emory Walsh & Sophie Nichol <br/>
+      SoftDev pd9 <br/>
+      K18 -- Come Up For Air <br/>
+      2020-04-21 <br/>
+    </p>
+    <h4>Use the following buttons to view a histogram of the 2010 SAT data from high schools in New York. You will see the reading, math , and writing scores.</h4>
+    <button id="read">Reading!</button>
+    <button id="math">Math!</button>
+    <button id="write">Writing!</button>
+    <button id="end">Reset</button>
+
+    <br><br><br>
+    The x-axis shows the scores for each subsection of the SAT<br>
+    The y-axis shows the number of schools where the average student has that score<br>
 
 
-  </style>
-</head>
-<body>
-<h1>SAT Scores</h1>
-<p>
-  Sophie Nichol and Emory Walsh<br/>
-  SD pd9 <br/>
-  K18--Come Up For Air <br/>
-  2020-04-21 <br/>
-</p>
-<button id="start">Start</button>
-<button id="end">Reset</button>
-<div id="container"></div>
+    <div id="data_viz">
+    </div>
 
-<script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
-<script src="{{ url_for('static', filename='stuff.js') }}"></script>
-</body>
+    <script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+    <script src="{{ url_for('static', filename='stuff.js') }}"></script>
+  </body>
 </html>

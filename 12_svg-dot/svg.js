@@ -29,6 +29,8 @@ svg.addEventListener("click", (e) => {
     svg.appendChild(line);
   }
 
+  if
+
   lx = x
   ly = y
 });
